@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: defimova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/05 15:16:11 by defimova          #+#    #+#             */
+/*   Updated: 2025/01/05 15:16:12 by defimova         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook()
@@ -43,7 +55,7 @@ int PhoneBook::get_contact_cnt() const
 void	PhoneBook::add_contact(const Contact &contact)
 {
     contacts[current_index] = contact;
-	if (contact_cnt < 7)
+	if (contact_cnt < 8)
 		contact_cnt++;
     current_index = (current_index + 1) % 8;
 }

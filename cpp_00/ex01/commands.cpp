@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   commands.cpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: defimova <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/05 15:16:55 by defimova          #+#    #+#             */
+/*   Updated: 2025/01/05 15:16:59 by defimova         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "main.hpp"
 
 void	search_contact(PhoneBook *phonebook)
@@ -12,7 +24,7 @@ void	search_contact(PhoneBook *phonebook)
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	}
-	else if (index >= 0 && index <= (phonebook->get_contact_cnt()))
+	else if (index >= 0 && index < (phonebook->get_contact_cnt()))
 	{
 		phonebook->get_contact(index).print_contact();
         std::cin.clear();
