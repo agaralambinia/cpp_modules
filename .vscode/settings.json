@@ -56,7 +56,8 @@
 		"charconv": "cpp",
 		"algorithm": "cpp",
 		"iomanip": "cpp",
-		"list": "cpp"
+		"list": "cpp",
+		"fstream": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

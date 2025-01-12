@@ -1,14 +1,14 @@
 C++ = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 SRCS = main.cpp \
-	HumanA.cpp \
-	HumanB.cpp \
-	Weapon.cpp \
+	funcs.cpp \
+	output.cpp
+	
 
 OBJ = $(SRCS:.cpp=.o)
 
-NAME = violence
+NAME = sed_is_for_losers
 
 all: $(NAME)
 
