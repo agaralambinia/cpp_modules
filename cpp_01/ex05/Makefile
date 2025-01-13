@@ -1,14 +1,12 @@
 C++ = c++
-FLAGS = -Wall -Wextra -Werror -std=c++98
+FLAGS = -Wall -Wextra -Werror -std=c++98 -fsanitize=address
 
 SRCS = main.cpp \
-	funcs.cpp \
-	output.cpp
-	
+	Harl.cpp \
 
 OBJ = $(SRCS:.cpp=.o)
 
-NAME = sed_is_for_losers
+NAME = harl
 
 all: $(NAME)
 
