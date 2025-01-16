@@ -51,20 +51,6 @@ int Fixed::toInt() const
 	return (_number >> _bits);
 }
 
-Fixed &Fixed::min(Fixed &a, Fixed &b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-Fixed &Fixed::max(Fixed &a, Fixed &b)
-{
-	if (a > b)
-		return (a);
-	return (b);
-}
-
 const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
 	if (a < b)
@@ -78,6 +64,17 @@ const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 		return (a);
 	return (b);
 }
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+	return const_cast<Fixed&>(Fixed::min(static_cast<const Fixed&>(a), static_cast<const Fixed&>(b)));
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+	return const_cast<Fixed&>(Fixed::max(static_cast<const Fixed&>(a), static_cast<const Fixed&>(b)));
+}
+
 
 bool Fixed::operator>(const Fixed &a) const
 {
@@ -129,7 +126,7 @@ Fixed Fixed::operator/(const Fixed &a) const
 	return (Fixed(toFloat() / a.toFloat()));
 }
 
-Fixed Fixed::operator++()
+Fixed &Fixed::operator++()
 {
 	_number++;
 	return (*this);
@@ -142,7 +139,7 @@ Fixed Fixed::operator++(int)
 	return (newthis);
 }
 
-Fixed Fixed::operator--()
+Fixed &Fixed::operator--()
 {
 	_number--;
 	return (*this);

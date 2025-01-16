@@ -38,5 +38,13 @@ int main(void)
 	std::cout << "c--: " << c-- << std::endl;
 	std::cout << "c: " << c << std::endl;
 	std::cout << "--c: " << --c << std::endl;
+	float j = 5;
+	--j = 5.05f;
+	Fixed g(5);
+	--g = Fixed(5.05f);
+	std::cout << "--5 = 5.05f: " << j << std::endl;
+	std::cout << "--5(fixed) = 5.05f: " << g << std::endl;
+	--c = 3;
+	std::cout << "--c = 3: " << c << std::endl;
 	std::cout << a << " and " << b << " min is " << Fixed::min( a, b ) << std::endl;
 }
