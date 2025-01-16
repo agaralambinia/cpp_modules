@@ -1,5 +1,6 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 void showClapStats(ClapTrap &clap)
 {
@@ -11,9 +12,14 @@ void showScavStats(ScavTrap &clap)
 	std::cout << ">> Stats of ScavTrap " << clap.getName() << " hp: " << clap.getHitPoints() << " energy: " << clap.getEnergyPoints() << std::endl;
 }
 
+void showFragStats(FragTrap &clap)
+{
+	std::cout << ">> Stats of FragTrap " << clap.getName() << " hp: " << clap.getHitPoints() << " energy: " << clap.getEnergyPoints() << std::endl;
+}
+
 int main(void)
 {
-	std::cout << std::endl << "***** TESTS FROM EX00 *****" << std::endl;
+	std::cout << std::endl << "***** TESTS FOR CLAPTRAP *****" << std::endl;
 
 	std::cout << std::endl << "*** Constructors ***" << std::endl;
 
@@ -63,6 +69,30 @@ int main(void)
 
 	strap.guardGate();
 	sclap.guardGate();
+
+	std::cout << std::endl << "***** TESTS FOR FRAGTRAP *****" << std::endl;
+
+	FragTrap fnoname;
+	FragTrap fclap("frog");
+	FragTrap fclap_two(fclap);
+	FragTrap ftrap;
+	ftrap = fclap_two;
+
+	showFragStats(fnoname);
+	showFragStats(fclap);
+	showFragStats(fclap_two);
+	showFragStats(ftrap);
+
+	fclap.attack("TARGET");
+	showFragStats(fclap);
+
+	fclap.guardGate();
+	ftrap.guardGate();
+
+	fclap.highFivesGuys();
+	fnoname.highFivesGuys();
+	fclap_two.highFivesGuys();
+	ftrap.highFivesGuys();
 
 	std::cout << std::endl << "*** Destructors ***" << std::endl;
 
