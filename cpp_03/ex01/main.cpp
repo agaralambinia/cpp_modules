@@ -74,6 +74,9 @@ int main(void)
 	showScavStats(strap);
 
 	strap.guardGate();
+
+	ClapTrap *cp = new ScavTrap();
+	delete cp;
 	sclap.guardGate();
 
 	std::cout << std::endl << "*** Destructors ***" << std::endl;
