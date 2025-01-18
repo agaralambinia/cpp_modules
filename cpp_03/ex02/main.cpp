@@ -62,9 +62,21 @@ int main(void)
 	showScavStats(sclap_two);
 	showScavStats(strap);
 
+	sclap.takeDamage(1);
+	showScavStats(sclap);
 	sclap.attack("TARGET");
 	showScavStats(sclap);
-
+	sclap.takeDamage(0);
+	showScavStats(sclap);
+	sclap.takeDamage(11);
+	showScavStats(sclap);
+	sclap.beRepaired(42);
+	showScavStats(sclap);
+	sclap.takeDamage(110);
+	showScavStats(sclap);
+	sclap.beRepaired(42);
+	showScavStats(sclap);
+	strap.takeDamage(99);
 	showScavStats(strap);
 
 	strap.guardGate();
@@ -74,25 +86,33 @@ int main(void)
 
 	FragTrap fnoname;
 	FragTrap fclap("frog");
-	FragTrap fclap_two(fclap);
-	FragTrap ftrap;
-	ftrap = fclap_two;
 
 	showFragStats(fnoname);
 	showFragStats(fclap);
-	showFragStats(fclap_two);
-	showFragStats(ftrap);
 
+	fclap.takeDamage(1);
+	showFragStats(fclap);
 	fclap.attack("TARGET");
 	showFragStats(fclap);
-
-	fclap.guardGate();
-	ftrap.guardGate();
+	fclap.takeDamage(0);
+	showFragStats(fclap);
+	fclap.takeDamage(11);
+	showFragStats(fclap);
+	fclap.beRepaired(42);
+	showFragStats(fclap);
+	fclap.takeDamage(110);
+	showFragStats(fclap);
+	fclap.beRepaired(42);
+	showFragStats(fclap);
+	fclap.attack("TARGET");
+	showFragStats(fclap);
+	fnoname.takeDamage(99);
+	showFragStats(fnoname);
+	fnoname.attack("TARGET");
+	showFragStats(fnoname);
 
 	fclap.highFivesGuys();
 	fnoname.highFivesGuys();
-	fclap_two.highFivesGuys();
-	ftrap.highFivesGuys();
 
 	std::cout << std::endl << "*** Destructors ***" << std::endl;
 

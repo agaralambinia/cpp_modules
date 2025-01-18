@@ -5,18 +5,19 @@
 
 class ClapTrap
 {
-	protected:
-		ClapTrap(const std::string name, const unsigned int hit_points, const unsigned int energy_points, const unsigned int attack_damage);
-
-		std::string		_name;
-		unsigned int	_hit_points;
-		unsigned int	_energy_points;
-		unsigned int	_attack_damage;
-	
-		static const unsigned int	_maxHP;
+	private:
 		static const unsigned int	_defaultAttackDamage;
 		static const unsigned int	_maxEnergyPoints;
 		static const std::string	_defaultName;
+
+	protected:
+		ClapTrap(const std::string name, unsigned int maxHP, unsigned int hit_points, const unsigned int energy_points, const unsigned int attack_damage);
+
+		std::string			_name;
+		unsigned int		_maxHP;
+		unsigned int		_hit_points;
+		unsigned int		_energy_points;
+		unsigned int		_attack_damage;
 
 	public:
 		ClapTrap();

@@ -5,8 +5,7 @@
 
 class ScavTrap : public ClapTrap
 {
-	protected:
-		static const unsigned int	_scavMaxHP;
+	private:
 		static const unsigned int	_scavDefaultAttackDamage;
 		static const unsigned int	_scavMaxEnergyPoints;
 		static const std::string	_scavDefaultName;

@@ -56,9 +56,21 @@ int main(void)
 	showScavStats(sclap_two);
 	showScavStats(strap);
 
+	sclap.takeDamage(1);
+	showScavStats(sclap);
 	sclap.attack("TARGET");
 	showScavStats(sclap);
-
+	sclap.takeDamage(0);
+	showScavStats(sclap);
+	sclap.takeDamage(11);
+	showScavStats(sclap);
+	sclap.beRepaired(42);
+	showScavStats(sclap);
+	sclap.takeDamage(110);
+	showScavStats(sclap);
+	sclap.beRepaired(42);
+	showScavStats(sclap);
+	strap.takeDamage(99);
 	showScavStats(strap);
 
 	strap.guardGate();
