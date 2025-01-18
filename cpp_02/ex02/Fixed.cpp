@@ -106,22 +106,22 @@ bool Fixed::operator!=(const Fixed &a) const
 	return (_number != a._number);
 }
 
-Fixed Fixed::operator+(const Fixed &a) const
+const Fixed Fixed::operator+(const Fixed &a) const
 {
 	return (Fixed(toFloat() + a.toFloat()));
 }
 
-Fixed Fixed::operator-(const Fixed &a) const
+const Fixed Fixed::operator-(const Fixed &a) const
 {
 	return (Fixed(toFloat() - a.toFloat()));
 }
 
-Fixed Fixed::operator*(const Fixed &a) const
+const Fixed Fixed::operator*(const Fixed &a) const
 {
 	return (Fixed(toFloat() * a.toFloat()));
 }
 
-Fixed Fixed::operator/(const Fixed &a) const
+const Fixed Fixed::operator/(const Fixed &a) const
 {
 	return (Fixed(toFloat() / a.toFloat()));
 }

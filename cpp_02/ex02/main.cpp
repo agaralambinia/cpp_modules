@@ -47,4 +47,19 @@ int main(void)
 	--c = 3;
 	std::cout << "--c = 3: " << c << std::endl;
 	std::cout << a << " and " << b << " min is " << Fixed::min( a, b ) << std::endl;
+	std::cout << "COMMENTED TESTS THAT SHALL NOT WORK" << std::endl;
+	// int i1 = 5;
+	// int i2 = 6;
+	// i1+i2=100;
+	// Fixed f1(5);
+	// Fixed f2(6);
+	// f1+f2 = 100;
+	// i1-i2=100;
+	// f1-f2 = 100;
+	// i1*i2=100;
+	// f1*f2 = 100;
+	// i1/i2=100;
+	// f1/f2 = 100;
+	// i1>i2=100;
+	// i1<i2=100;
 }
