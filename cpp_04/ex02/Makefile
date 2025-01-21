@@ -7,11 +7,11 @@ SRCS = main.cpp \
 	Cat.cpp \
 	WrongAnimal.cpp \
 	WrongCat.cpp \
-	test.cpp \
+	Brain.cpp \
 
 OBJ = $(SRCS:.cpp=.o)
 
-NAME = polymorphism
+NAME = abstract
 
 all: $(NAME)
 
