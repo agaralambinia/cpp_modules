@@ -12,10 +12,13 @@ int main() {
 		Intern i;
 		AForm* f1 = i.makeForm("shrubbery creation", "Earth");
 		std::cout << *f1 << std::endl;
+		delete f1;
 		AForm* f2 = i.makeForm("robotomy request", "ROBOT");
 		std::cout << *f2 << std::endl;
+		delete f2;
 		AForm* f3 = i.makeForm("presidential pardon", "you");
 		std::cout << *f3 << std::endl;
+		delete f3;
 		AForm* f4 = i.makeForm("pardon robotomy", "you");
 		if (f4 == nullptr) {
             std::cout << "Intern didn't manage it." << std::endl;
