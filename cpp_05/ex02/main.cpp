@@ -97,7 +97,7 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.1: executing an OK form - PresidentialPardonForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.1: executing an OK form from form - PresidentialPardonForm"RESET << std::endl;
 	try {
 		PresidentialPardonForm f;
 		std::cout << f << std::endl;
@@ -110,7 +110,7 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.2: executing an OK form - ShrubberyCreationForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.2: executing an OK form from form- ShrubberyCreationForm"RESET << std::endl;
 	try {
 		ShrubberyCreationForm f;
 		std::cout << f << std::endl;
@@ -123,7 +123,7 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.3: executing an OK form - RobotomyRequestForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.3: executing an OK form from form- RobotomyRequestForm"RESET << std::endl;
 	try {
 		RobotomyRequestForm f;
 		std::cout << f << std::endl;
@@ -140,37 +140,110 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.4: executing an KO unsigned form - PresidentialPardonForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.4: executing an OK form from Bureaucrat - PresidentialPardonForm"RESET << std::endl;
 	try {
 		PresidentialPardonForm f;
 		std::cout << f << std::endl;
 		Bureaucrat b("Burocrat", 1);
-		f.execute(b);
+
+		b.signForm(f);
+		std::cout << f << std::endl;
+		b.executeForm(f);
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.5: executing an KO unsigned form - ShrubberyCreationForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.5: executing an OK form from Bureaucrat- ShrubberyCreationForm"RESET << std::endl;
 	try {
 		ShrubberyCreationForm f;
 		std::cout << f << std::endl;
 		Bureaucrat b("Burocrat", 1);
-		f.execute(b);
+
+		b.signForm(f);
+		std::cout << f << std::endl;
+		b.executeForm(f);
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.6: executing an KO unsigned form - RobotomyRequestForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.6: executing an OK form from Bureaucrat- RobotomyRequestForm"RESET << std::endl;
 	try {
 		RobotomyRequestForm f;
 		std::cout << f << std::endl;
 		Bureaucrat b("Burocrat", 1);
-		f.execute(b);
+
+		b.signForm(f);
+		std::cout << f << std::endl;
+		b.executeForm(f);
+		b.executeForm(f);
+		b.executeForm(f);
+		b.executeForm(f);
+		b.executeForm(f);
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.7: executing an KO LEVEL form - PresidentialPardonForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.7: executing an KO unsigned form from form - PresidentialPardonForm"RESET << std::endl;
+	try {
+		PresidentialPardonForm f;
+		std::cout << f << std::endl;
+		Bureaucrat b("Burocrat", 1);
+		b.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.8: executing an KO unsigned form from form - ShrubberyCreationForm"RESET << std::endl;
+	try {
+		ShrubberyCreationForm f;
+		std::cout << f << std::endl;
+		Bureaucrat b("Burocrat", 1);
+		b.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.9: executing an KO unsigned form from form - RobotomyRequestForm"RESET << std::endl;
+	try {
+		RobotomyRequestForm f;
+		std::cout << f << std::endl;
+		Bureaucrat b("Burocrat", 1);
+		b.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.10: executing an KO unsigned form Bureaucrat form - PresidentialPardonForm"RESET << std::endl;
+	try {
+		PresidentialPardonForm f;
+		std::cout << f << std::endl;
+		Bureaucrat b("Burocrat", 1);
+		b.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.11: executing an KO unsigned form from Bureaucrat - ShrubberyCreationForm"RESET << std::endl;
+	try {
+		ShrubberyCreationForm f;
+		std::cout << f << std::endl;
+		Bureaucrat b("Burocrat", 1);
+		b.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.12: executing an KO unsigned form from Bureaucrat - RobotomyRequestForm"RESET << std::endl;
+	try {
+		RobotomyRequestForm f;
+		std::cout << f << std::endl;
+		Bureaucrat b("Burocrat", 1);
+		b.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.13: executing an KO LEVEL form from form - PresidentialPardonForm"RESET << std::endl;
 	try {
 		PresidentialPardonForm f;
 		std::cout << f << std::endl;
@@ -184,7 +257,7 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.7: executing an KO LEVEL form - ShrubberyCreationForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.14: executing an KO LEVEL form from form - ShrubberyCreationForm"RESET << std::endl;
 	try {
 		ShrubberyCreationForm f("TEST");
 		std::cout << f << std::endl;
@@ -198,7 +271,7 @@ int main() {
 		std::cerr << e.what() << std::endl;
 	}
 
-	std::cout << BLUE"Test 3.7: executing an KO LEVEL form - RobotomyRequestForm"RESET << std::endl;
+	std::cout << BLUE"Test 3.15: executing an KO LEVEL form from form - RobotomyRequestForm"RESET << std::endl;
 	try {
 		RobotomyRequestForm f;
 		std::cout << f << std::endl;
@@ -208,6 +281,48 @@ int main() {
 		bb.signForm(f);
 		std::cout << f << std::endl;
 		f.execute(bg);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.13: executing an KO LEVEL form from Bureaucrat - PresidentialPardonForm"RESET << std::endl;
+	try {
+		PresidentialPardonForm f;
+		std::cout << f << std::endl;
+		Bureaucrat bb("GoodBurocrat", 1);
+		Bureaucrat bg("BadBurocrat", 150);
+
+		bb.signForm(f);
+		std::cout << f << std::endl;
+		bg.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.14: executing an KO LEVEL form from Bureaucrat - ShrubberyCreationForm"RESET << std::endl;
+	try {
+		ShrubberyCreationForm f("TEST");
+		std::cout << f << std::endl;
+		Bureaucrat bb("GoodBurocrat", 1);
+		Bureaucrat bg("BadBurocrat", 150);
+
+		bb.signForm(f);
+		std::cout << f << std::endl;
+		bg.executeForm(f);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	std::cout << BLUE"Test 3.15: executing an KO LEVEL form from Bureaucrat - RobotomyRequestForm"RESET << std::endl;
+	try {
+		RobotomyRequestForm f;
+		std::cout << f << std::endl;
+		Bureaucrat bb("GoodBurocrat", 1);
+		Bureaucrat bg("BadBurocrat", 150);
+
+		bb.signForm(f);
+		std::cout << f << std::endl;
+		bg.executeForm(f);
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
 	}

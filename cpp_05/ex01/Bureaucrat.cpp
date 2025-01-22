@@ -38,15 +38,19 @@ int Bureaucrat::getGrade() const
 void Bureaucrat::incrementGrade()
 {
 	std::cout << "Incrementing grade of Bureaucrat " << this->getName() << std::endl;
-	if (--(this->_grade) < 1)
+	if ((this->_grade) <= 1)
 		throw Bureaucrat::GradeTooHighException();
+	else
+		--this->_grade;
 }
 
 void Bureaucrat::decrementGrade()
 {
 	std::cout << "Decrementing grade of Bureaucrat " << this->getName() << std::endl;
-	if (++(this->_grade) > 150)
+	if ((this->_grade) >= 150)
 		throw Bureaucrat::GradeTooLowException();
+	else
+		++this->_grade;
 }
 
 void Bureaucrat::signForm(Form &form)

@@ -14,28 +14,32 @@ Intern &Intern::operator=(const Intern &a)
 
 Intern::~Intern() {}
 
-AForm *Intern::makeForm(std::string name, std::string target)
+static AForm	*makePresident(const std::string target)
 {
-	int i = 0;
-	std::string forms[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+	return (new PresidentialPardonForm(target));
+}
 
-	for (i = 0; i < 3; i++)
+static AForm	*makeRobot(const std::string target)
+{
+	return (new RobotomyRequestForm(target));
+}
+
+static AForm	*makeShrubbery(const std::string target)
+{
+	return (new ShrubberyCreationForm(target));
+}
+
+AForm* Intern::makeForm(std::string name, std::string target)
+{
+	AForm *(*forms[])(const std::string target) = {&makePresident, &makeRobot, &makeShrubbery};
+	std::string form_names[] = {"shrubbery creation", "robotomy request", "presidential pardon"};
+
+	for (int i = 0; i < 3; i++)
 	{
-		if (forms[i] == name)
-			break;
-	}
-	switch (i)
-	{
-		case 0:
-			return (new ShrubberyCreationForm(target));
-		case 1:
-			return (new RobotomyRequestForm(target));
-		case 2:
-			return (new PresidentialPardonForm(target));
-		default:
-		{
-			std::cout << "Intern doesn't know how to create a form " << name << std::endl;
-			return (NULL);
+		if (name == form_names[i]) {
+			return (forms[i](target));
 		}
 	}
+	std::cout << "Intern doesn't know how to create a form " << name << std::endl;
+	return NULL;
 }
