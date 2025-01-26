@@ -40,8 +40,8 @@ void convertChar(std::string input)
 
 	std::cout << "char: '" << c << "'" << std::endl;
 	std::cout << "int: " << i << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "float: " << f << "f" << std::endl;
-	std::cout << std::fixed << std::setprecision(1) << "double: " << d << std::endl;
+	std::cout << "float: " << f << ".0f" << std::endl;
+	std::cout << "double: " << d << ".0" << std::endl;
 }
 
 void convertNumber(std::string input)
@@ -76,14 +76,14 @@ void convertNumber(std::string input)
 		std::cout << "float: impossible" << std::endl;
 	else
 	{
-		std::cout << "float: " << f << "f" << std::endl;
+		std::cout << "float: " << f << ".0f" << std::endl;
 	}
 
 	d = static_cast<double>(std::atof(input.c_str()));
 	if (d > std::numeric_limits<double>::max() || d < -std::numeric_limits<double>::max())
 		std::cout << "double: impossible" << std::endl;
 	else
-		std::cout << "double: " << d << std::endl;
+		std::cout << "double: " << d << ".0" << std::endl;
 }
 
 void convertFloat(std::string input)
@@ -106,17 +106,22 @@ void convertFloat(std::string input)
 		if (i >= 32 && i <= 126)
 			std::cout << "char: '" << c << "'" << std::endl;
 		else if (i < 0 || i > 255)
-			std::cout << "char: non displayable" << std::endl;
-		else
 			std::cout << "char: impossible" << std::endl;
+		else
+			std::cout << "char: non displayable" << std::endl;
 		i = std::atoi(input.c_str());
 		std::cout << "int: " << i << std::endl;
 	}
 
 	f = std::atof(input.c_str());
-	std::cout << "float: " << f << "f" << std::endl;
 	d = static_cast<double>(std::atof(input.c_str()));
-	std::cout << "double: " << d << std::endl;
+
+	if (input.find('.') != input.npos) {
+		std::cout << "float: " << f << "f" << std::endl;
+		std::cout << "double: " << d << std::endl;}
+	else {
+		std::cout << "float: " << f << ".0f" << std::endl;
+		std::cout << "double: " << d << ".0" << std::endl;}
 }
 
 void convertDouble(std::string input)
@@ -139,9 +144,9 @@ void convertDouble(std::string input)
 		if (i >= 32 && i <= 126)
 			std::cout << "char: '" << c << "'" << std::endl;
 		else if (i < 0 || i > 255)
-			std::cout << "char: non displayable" << std::endl;
-		else
 			std::cout << "char: impossible" << std::endl;
+		else
+			std::cout << "char: non displayable" << std::endl;
 		i = std::atoi(input.c_str());
 		std::cout << "int: " << i << std::endl;
 	}
@@ -150,9 +155,18 @@ void convertDouble(std::string input)
 	if (f > std::numeric_limits<double>::max() || f < -std::numeric_limits<double>::max())
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << f << "f" << std::endl;
+	{	if (f != static_cast<float>(static_cast<int>(f))) {
+			std::cout << "float: " << f << "f" << std::endl;
+		}
+		else {
+			std::cout << "float: " << f << ".0f" << std::endl;
+		}
+	}
 	d = std::atof(input.c_str());
-	std::cout << "double: " << d << std::endl;
+	if (d != static_cast<float>(static_cast<int>(d))) {
+		std::cout << "double: " << d << std::endl;}
+	else {
+		std::cout << "double: " << d << ".0" << std::endl;}
 }
 
 // detecting input data type
@@ -198,8 +212,6 @@ bool isFloat(const std::string input)
 			return (false);
 		i++;
 	}
-	if (!withDecimalPrt)
-		return (false);
 	float result = static_cast<float>(std::atof(input.c_str()));
 	if (result > std::numeric_limits<float>::max() || result < -std::numeric_limits<float>::max())
 		return (false);

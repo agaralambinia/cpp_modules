@@ -44,6 +44,17 @@ int main(int argc, char **argv)
 		* 42.1f
 		* -42.1f
 		* 0.1f
+		* 0.0f
+		* 42f
+		* .0f
+
+	TESTS "double":
+		* 42.1
+		* -42.1
+		* 0.1
+		* 0.0
+		* 42
+		.0
 
 	TESTS "char":
 		* f
