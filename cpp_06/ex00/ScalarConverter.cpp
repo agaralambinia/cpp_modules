@@ -116,7 +116,7 @@ void convertFloat(std::string input)
 	f = std::atof(input.c_str());
 	d = static_cast<double>(std::atof(input.c_str()));
 
-	if (input.find('.') != input.npos) {
+	if (f != static_cast<float>(static_cast<int>(f))) {
 		std::cout << "float: " << f << "f" << std::endl;
 		std::cout << "double: " << d << std::endl;}
 	else {
@@ -191,6 +191,9 @@ bool isFloat(const std::string input)
 {
 	unsigned int i = 0;
 	bool withDecimalPrt = false;
+
+	if (input.size() == 1 && input[0] == 'f')
+		return (false);
 
 	if (input[0] == '-')
 	{
