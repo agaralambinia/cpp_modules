@@ -1,4 +1,3 @@
-// TODO: что делать с const?
 #include "whatever.hpp"
 
 #define BLUE	"\033[34;1m"
@@ -26,17 +25,6 @@ std::cout << BLUE"TESTS FROM SUBJECT"RESET << std::endl;
 }
 
 std::cout << std::endl << BLUE"MORE TESTS"RESET << std::endl;
-{
-	std::cout << std::endl << GREEN"static int"RESET << std::endl;
-
-	const int a = 2;
-    const int b = 3;
-	std::cout << "before swap: a = " << a << ", b = " << b << std::endl;
-	//::swap( a, b );
-	std::cout << "after swap: a = " << a << ", b = " << b << std::endl;
-    std::cout << "min: " << ::min( a, b ) << std::endl;
-    std::cout << "max: " << ::max( a, b ) << std::endl;
-}
 
 {
 	std::cout << std::endl << GREEN"signed char"RESET << std::endl;
