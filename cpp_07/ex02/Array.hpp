@@ -17,7 +17,7 @@ class Array
 		T &operator[](unsigned int index);
 		const T &operator[](unsigned int index) const;
 
-		unsigned int size(void) const;
+		unsigned int size() const;
 
 	private:
 		T *_arr;

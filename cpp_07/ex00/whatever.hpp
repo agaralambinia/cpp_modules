@@ -12,7 +12,7 @@ void swap(Whatever &a, Whatever &b)
 }
 
 template <typename Whatever>
-Whatever min(Whatever a, Whatever b)
+Whatever min(Whatever &a, Whatever &b)
 {
     if (a < b)
         return (a);
@@ -21,7 +21,7 @@ Whatever min(Whatever a, Whatever b)
 }
 
 template <typename Whatever>
-Whatever max(Whatever a, Whatever b)
+Whatever max(Whatever &a, Whatever &b)
 {
     if (a > b)
         return (a);
