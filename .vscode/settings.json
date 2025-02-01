@@ -58,7 +58,13 @@
 		"iomanip": "cpp",
 		"list": "cpp",
 		"fstream": "cpp",
-		"*.tpp": "cpp"
+		"*.tpp": "cpp",
+		"deque": "cpp",
+		"set": "cpp",
+		"functional": "cpp",
+		"unordered_set": "cpp",
+		"stack": "cpp",
+		"__tree": "cpp"
 	},
 	"C_Cpp.errorSquiggles": "disabled"
 }

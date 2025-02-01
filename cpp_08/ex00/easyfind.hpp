@@ -19,5 +19,4 @@ typename  T::const_iterator easyfind(const T &container, int to_find) {
 	return (it);
 }
 
-
 #endif
