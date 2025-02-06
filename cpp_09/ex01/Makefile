@@ -2,11 +2,11 @@ C++ = c++
 FLAGS = -std=c++98 -Wall -Wextra -Werror -fsanitize=address
 
 SRCS = main.cpp \
-	PmergeMe.cpp \
+	RPN.cpp \
 
 OBJ = $(SRCS:.cpp=.o)
 
-NAME = PmergeMe
+NAME = RPN
 
 all: $(NAME)
 

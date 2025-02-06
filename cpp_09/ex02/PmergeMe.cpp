@@ -97,8 +97,8 @@ std::list<int> PmergeMe::mergeSortList(std::list<int>& lst) {
 }
 
 void PmergeMe::sort(int argc, char** argv) {
-    if (argc < 2) {
-        std::cerr << "Error: Not enough arguments provided. Give at least 1 int." << std::endl;
+    if (argc != 2) {
+        std::cerr << "Error: Wrong amount of args. Give exactly 1 expression." << std::endl;
         return;
     }
 
