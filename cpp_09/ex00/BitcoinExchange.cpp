@@ -118,7 +118,9 @@ void BitcoinExchange::processInputFile(const std::string& filename) {
 		std::string closestDate = findClosestDate(dateStr);
 		double exchangeRate = _exchangeRates[closestDate];
 		double result = value * exchangeRate;
-		
+		if (result == -0)
+			result = 0;
+
 		std::cout << dateStr << " => " << value << " = " << result << std::endl;
 	}
 }

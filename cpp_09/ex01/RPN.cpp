@@ -23,20 +23,37 @@ bool RPN::isOperator(char c) {
 	return c == '+' || c == '-' || c == '*' || c == '/';
 }
 
+// w/o positive and 
+// long RPN::parseNumber(const std::string& expr, long& pos) {
+// 	long num = 0;
+// 	int sign = 1;
+
+// 	if (expr[pos] == '-') {
+// 		sign = -1;
+// 		pos++;
+// 	}
+
+// 	while (pos < static_cast<long>(expr.length()) && std::isdigit(expr[pos])) {
+// 		num = num * 10 + (expr[pos] - '0');
+// 		pos++;
+// 	}
+// 	return num * sign;
+// }
+
 long RPN::parseNumber(const std::string& expr, long& pos) {
 	long num = 0;
-	int sign = 1;
 
 	if (expr[pos] == '-') {
-		sign = -1;
-		pos++;
+		return -1;
 	}
-
 	while (pos < static_cast<long>(expr.length()) && std::isdigit(expr[pos])) {
 		num = num * 10 + (expr[pos] - '0');
 		pos++;
 	}
-	return num * sign;
+	if (num > 10) {
+		return -1;
+	}
+	return num;
 }
 
 long RPN::Calculate(long argc, char** argv) {
@@ -67,7 +84,13 @@ long RPN::Calculate(long argc, char** argv) {
 
 		if (std::isdigit(expr[pos]) || (static_cast<long>(expr.length()) - 1 > pos && expr[pos] == '-' && std::isdigit(expr[pos+1]))) {
 			if (_stack.empty() || std::isspace(expr[pos - 1])) {
-				long num = parseNumber(expr, pos); 
+				long num = parseNumber(expr, pos);
+				// remove this if for negative and big numbers
+				if (num == -1) {
+					std::cerr << "Error" << std::endl;
+					stackClear(&_stack);
+					return 1;
+				}
 				_stack.push(num);
 			}
 			else {

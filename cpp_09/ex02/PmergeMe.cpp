@@ -57,6 +57,37 @@ void PmergeMe::mergeSortVector(std::vector<int>& arr, size_t left, size_t right)
 	mergeVector(arr, left, mid, right);
 }
 
+std::list<int> PmergeMe::insertionSortList(std::list<int>& lst) {
+    if (lst.size() <= 1) {
+        return lst;
+    }
+
+    std::list<int>::iterator current = lst.begin();
+    ++current;
+
+    while (current != lst.end()) {
+        int value = *current;
+        std::list<int>::iterator position = current;
+
+        while (position != lst.begin()) {
+            std::list<int>::iterator prev = position;
+            --prev;
+            
+            if (*prev > value) {
+                *position = *prev;
+                position = prev;
+            } else {
+                break;
+            }
+        }
+
+        *position = value;
+        ++current;
+    }
+
+    return lst;
+}
+
 std::list<int> PmergeMe::mergeList(std::list<int>& left, std::list<int>& right) {
 	std::list<int> result;
 
@@ -77,16 +108,16 @@ std::list<int> PmergeMe::mergeList(std::list<int>& left, std::list<int>& right) 
 }
 
 std::list<int> PmergeMe::mergeSortList(std::list<int>& lst) {
-	if (_lst.size() <= 1) {
-		return lst;
+	if (lst.size() <= 11) {
+		return insertionSortList(lst);
 	}
 
 	std::list<int> left, right;
-	size_t mid = _lst.size() / 2;
+	size_t mid = lst.size() / 2;
 
 	for (size_t i = 0; i < mid; ++i) {
-		left.push_back(_lst.front());
-		_lst.pop_front();
+		left.push_back(lst.front());
+		lst.pop_front();
 	}
 	right.splice(right.begin(), lst);
 
@@ -97,8 +128,8 @@ std::list<int> PmergeMe::mergeSortList(std::list<int>& lst) {
 }
 
 void PmergeMe::sort(int argc, char** argv) {
-	if (argc != 2) {
-		std::cerr << "Error: Wrong amount of args. Give exactly 1 expression." << std::endl;
+	if (argc <= 2) {
+		std::cerr << "Error: Wrong amount of args. Give at least 1 int." << std::endl;
 		return;
 	}
 

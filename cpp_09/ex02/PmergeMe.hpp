@@ -20,6 +20,7 @@ private:
 	void mergeSortVector(std::vector<int>& arr, size_t left, size_t right);
 	std::list<int> mergeList(std::list<int>& left, std::list<int>& right);
 	std::list<int> mergeSortList(std::list<int>& lst);
+	std::list<int> insertionSortList(std::list<int>& lst);
 
 public:
 	PmergeMe();
