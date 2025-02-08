@@ -16,7 +16,7 @@ good:
 */
 
 int main(int argc, char** argv) {
-    PmergeMe sorter;
-    sorter.sort(argc, argv);
-    return 0;
+	PmergeMe sorter;
+	sorter.sort(argc, argv);
+	return 0;
 }

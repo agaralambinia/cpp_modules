@@ -12,10 +12,10 @@ private:
 	long parseNumber(const std::string& expr, long& pos);
 
 public:
-    RPN();
-    RPN(const RPN& other);
-    RPN& operator=(const RPN& other);
-    ~RPN();
+	RPN();
+	RPN(const RPN& other);
+	RPN& operator=(const RPN& other);
+	~RPN();
 
 	long Calculate(long argc, char** argv);
 };

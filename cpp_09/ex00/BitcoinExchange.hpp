@@ -22,32 +22,32 @@ private:
 	void 		processInputFile(const std::string& filename);
 
 public:
-    BitcoinExchange();
-    BitcoinExchange(const BitcoinExchange& other);
-    BitcoinExchange& operator=(const BitcoinExchange& other);
-    ~BitcoinExchange();
+	BitcoinExchange();
+	BitcoinExchange(const BitcoinExchange& other);
+	BitcoinExchange& operator=(const BitcoinExchange& other);
+	~BitcoinExchange();
 
 	void exchange(int argc, char* argv[]);
 
 	class WrongProgramCall : public std::exception {
-        public:
-            const char* what() const throw();
-    };
+		public:
+			const char* what() const throw();
+	};
 
 	class NoDataCsvException : public std::exception {
-        public:
-            const char* what() const throw();
-    };
+		public:
+			const char* what() const throw();
+	};
 
 	class OpenInputFileException : public std::exception {
-        public:
-            const char* what() const throw();
-    };
+		public:
+			const char* what() const throw();
+	};
 
 	class IncorrectInputFileFormat : public std::exception {
-        public:
-            const char* what() const throw();
-    };
+		public:
+			const char* what() const throw();
+	};
 };
 
 #endif

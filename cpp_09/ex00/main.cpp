@@ -1,15 +1,15 @@
 #include "BitcoinExchange.hpp"
 
 int main(int argc, char* argv[]) {
-    BitcoinExchange btc;
+	BitcoinExchange btc;
 
 	try {
-        btc.exchange(argc, argv);
-    }
-    catch(const std::exception& e) {
-        std::cerr << e.what() << '\n';
-        return 1;
-    }
+		btc.exchange(argc, argv);
+	}
+	catch(const std::exception& e) {
+		std::cerr << e.what() << '\n';
+		return 1;
+	}
 
-    return 0;
+	return 0;
 }

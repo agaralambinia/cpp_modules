@@ -12,8 +12,8 @@
 
 class PmergeMe {
 private:
-    std::vector<int> _vec;
-    std::list<int> _lst;
+	std::vector<int> _vec;
+	std::list<int> _lst;
 
 	bool isValidNumber(const char* str);
 	void mergeVector(std::vector<int>& arr, size_t left, size_t mid, size_t right);
@@ -22,10 +22,10 @@ private:
 	std::list<int> mergeSortList(std::list<int>& lst);
 
 public:
-    PmergeMe();
-    PmergeMe(const PmergeMe& other);
-    PmergeMe& operator=(const PmergeMe& other);
-    ~PmergeMe();
+	PmergeMe();
+	PmergeMe(const PmergeMe& other);
+	PmergeMe& operator=(const PmergeMe& other);
+	~PmergeMe();
 
 	void sort(int argc, char** argv);
 };
