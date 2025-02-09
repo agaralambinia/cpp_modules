@@ -15,12 +15,13 @@ private:
 	std::vector<int> _vec;
 	std::list<int> _lst;
 
-	bool isValidNumber(const char* str);
-	void mergeVector(std::vector<int>& arr, size_t left, size_t mid, size_t right);
-	void mergeSortVector(std::vector<int>& arr, size_t left, size_t right);
-	std::list<int> mergeList(std::list<int>& left, std::list<int>& right);
-	std::list<int> mergeSortList(std::list<int>& lst);
-	std::list<int> insertionSortList(std::list<int>& lst);
+	bool			isValidNumber(const char* str);
+	void			mergeVector(std::vector<int>& arr, size_t left, size_t mid, size_t right);
+	void			mergeSortVector(std::vector<int>& arr, size_t left, size_t right);
+	void			insertionSortVector(std::vector<int>& arr, size_t left, size_t right);
+	std::list<int>	mergeList(std::list<int>& left, std::list<int>& right);
+	std::list<int>	mergeSortList(std::list<int>& lst);
+	std::list<int>	insertionSortList(std::list<int>& lst);
 
 public:
 	PmergeMe();
