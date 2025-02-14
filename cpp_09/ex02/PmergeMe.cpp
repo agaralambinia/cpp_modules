@@ -2,11 +2,10 @@
 
 PmergeMe::PmergeMe() {}
 
-PmergeMe::PmergeMe(const PmergeMe &other) : _vec(other._vec), _lst(other._lst) {}
+PmergeMe::PmergeMe(const PmergeMe &other) : _lst(other._lst) {}
 
 PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 	if (this != &other) {
-		_vec = other._vec;
 		_lst = other._lst;
 	}
 	return *this;
@@ -14,135 +13,79 @@ PmergeMe &PmergeMe::operator=(const PmergeMe &other) {
 
 PmergeMe::~PmergeMe() {}
 
-bool PmergeMe::isValidNumber(const char* str) {
-	if (!str || !*str) return false;
+void PmergeMe::printFirstElements(const std::list<int>& lst, int n) {
+    std::list<int>::const_iterator it = lst.begin();
+    int count = 0;
 
-	for (const char* ptr = str; *ptr; ++ptr) {
-		if (!std::isdigit(*ptr)) return false;
-	}
-	return true;
+    while (it != lst.end() && count < n) {
+        std::cout << *it << " ";
+        ++it;
+        ++count;
+    }
+
+	if (lst.size() > 4) std::cout << "[...]";
+	std::cout << std::endl;
 }
 
-void PmergeMe::insertionSortVector(std::vector<int>& arr, size_t left, size_t right) {
-	for (size_t i = left + 1; i <= right; i++) {
-		int key = arr[i];
-		size_t j = i;
-		
-		while (j > left && arr[j - 1] > key) {
-			arr[j] = arr[j - 1];
-			j--;
+std::list binaryJacobsthalInsertion(std::list<std::list>& lst) {
+	//НАПИСАТЬ
+}
+
+std::list recursiveFordJohnsonLst(std::list<std::list>& initList) {
+	std::list<std::list> winners;
+	std::list<std::list> losers;
+	int i = 0;
+
+	while (!initList.empty()) {
+		std::list<int> first;
+		std::list<int> second;
+
+		first.push_back(initList.front().front());
+		first.push_back(initList.front().back());
+		initList.pop_front();
+		second.push_back(initList.front().front());
+		second.push_back(initList.front().back());
+		initList.pop_front();
+
+		if (first.front() >= second.front()) {
+			second.push_back(first.front().back());
+			losers.push_back(second);
+			first.pop_back();
+			first.push_back(i);
+			winners.push_back(first);
 		}
-		arr[j] = key;
-	}
-}
-
-void PmergeMe::mergeVector(std::vector<int>& arr, size_t left, size_t mid, size_t right) {
-	std::vector<int> temp(right - left + 1);
-	size_t i = left, j = mid + 1, k = 0;
-
-	while (i <= mid && j <= right) {
-		if (arr[i] <= arr[j]) {
-			temp[k++] = arr[i++];
-		} else {
-			temp[k++] = arr[j++];
+		else {
+			first.push_back(second.front().back());
+			losers.push_back(first);
+			second.pop_back();
+			second.push_back(i);
+			winners.push_back(second);
 		}
+		i++;
 	}
-	while (i <= mid) {
-		temp[k++] = arr[i++];
+	if (winners.size() == 1) {
+		return binaryJacobsthalInsertion(winners, losers);
 	}
-	while (j <= right) {
-		temp[k++] = arr[j++];
-	}
-
-	for (i = 0; i < k; i++) {
-		arr[left + i] = temp[i];
-	}
+	return binaryJacobsthalInsertion(recursiveFordJohnsonLst(winners, losers));
 }
 
-void PmergeMe::mergeSortVector(std::vector<int>& arr, size_t left, size_t right) {
-	if (left >= right) {
-		return;
-	}
+std::list PmergeMe::beginSortList(std::list<int>& lst) {
+	std::list<std::list> initList;
+	std::list<int> node;
 
-	if (right - left <= 50) {
-		insertionSortVector(arr, left, right);
-		return;
-	}
-
-	size_t mid = left + ((right - left) / 2);
-	mergeSortVector(arr, left, mid);
-	mergeSortVector(arr, mid + 1, right);
-	mergeVector(arr, left, mid, right);
-}
-
-std::list<int> PmergeMe::insertionSortList(std::list<int>& lst) {
-	if (lst.size() <= 1) {
-		return lst;
-	}
-
-	std::list<int>::iterator current = lst.begin();
-	++current;
-
-	while (current != lst.end()) {
-		int value = *current;
-		std::list<int>::iterator position = current;
-
-		while (position != lst.begin()) {
-			std::list<int>::iterator prev = position;
-			--prev;
-			
-			if (*prev > value) {
-				*position = *prev;
-				position = prev;
-			} else {
-				break;
-			}
-		}
-
-		*position = value;
-		++current;
-	}
-
-	return lst;
-}
-
-std::list<int> PmergeMe::mergeList(std::list<int>& left, std::list<int>& right) {
-	std::list<int> result;
-
-	while (!left.empty() && !right.empty()) {
-		if (left.front() <= right.front()) {
-			result.push_back(left.front());
-			left.pop_front();
-		} else {
-			result.push_back(right.front());
-			right.pop_front();
-		}
-	}
-
-	result.splice(result.end(), left);
-	result.splice(result.end(), right);
-
-	return result;
-}
-
-std::list<int> PmergeMe::mergeSortList(std::list<int>& lst) {
-	if (lst.size() <= 50) {
-		return insertionSortList(lst);
-	}
-
-	std::list<int> left, right;
-	size_t mid = lst.size() / 2;
-
-	for (size_t i = 0; i < mid; ++i) {
-		left.push_back(lst.front());
+	while (!lst.empty()) {
+		node.push_back(lst.front());
 		lst.pop_front();
+		node.push_back(0);
+		initList.push_back(node);
 	}
-	right.splice(right.begin(), lst);
 
-	left = mergeSortList(left);
-	right = mergeSortList(right);
-
-	return mergeList(left, right);
+	initList = recursiveFordJohnsonLst(initList);
+	while (!initList.empty()) {
+		lst.push_back(initList.front(front()));
+		initList.pop_front();
+	}
+	return(lst);
 }
 
 void PmergeMe::sort(int argc, char** argv) {
@@ -151,13 +94,11 @@ void PmergeMe::sort(int argc, char** argv) {
 		return;
 	}
 
-	_vec.clear();
 	_lst.clear();
 
 	for (int i = 1; i < argc; ++i) {
 		if (!isValidNumber(argv[i])) {
 			std::cerr << "Error: Invalid input '" << argv[i] << "'. Only positive integers are allowed." << std::endl;
-			_vec.clear();
 			_lst.clear();
 			return;
 		}
@@ -165,49 +106,28 @@ void PmergeMe::sort(int argc, char** argv) {
 		long num = std::atol(argv[i]);
 		if (num <= 0 || num > INT_MAX) {
 			std::cerr << "Error: Number '" << argv[i] << "' is out of range. Must be positive and not greater than INT_MAX." << std::endl;
-			_vec.clear();
 			_lst.clear();
 			return;
 		}
 
-		_vec.push_back(static_cast<int>(num));
 		_lst.push_back(static_cast<int>(num));
 	}
 
 	std::cout << "Before: ";
-	for (size_t i = 0; i < _vec.size() && i < 4; ++i) {
-		std::cout << _vec[i] << " ";
-	}
-	if (_vec.size() > 4) std::cout << "[...]";
-	std::cout << std::endl;
+	printFirstElements(_lst, 4);
 
 	clock_t start = clock();
-	if (!_vec.empty()) {
-		mergeSortVector(_vec, 0, _vec.size() - 1);
+	if (!_lst.empty() && !_lst.size == 1) {
+		_lst = beginSortList(_lst);
 	}
 	clock_t end = clock();
-	double vector_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
-
-	start = clock();
-	if (!_lst.empty()) {
-		_lst = mergeSortList(_lst);
-	}
-	end = clock();
 	double list_time = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1000000;
 
 	std::cout << "After:  ";
-	for (size_t i = 0; i < _vec.size() && i < 4; ++i) {
-		std::cout << _vec[i] << " ";
-	}
-	if (_vec.size() > 4) std::cout << "[...]";
-	std::cout << std::endl;
+	printFirstElements(_lst, 4);
 
-	std::cout << "Time to process a range of " << _vec.size() 
-			  << " elements with std::vector : " << std::fixed 
-			  << std::setprecision(5) << vector_time << " us" << std::endl;
 	std::cout << "Time to process a range of " << _lst.size() 
 			  << " elements with std::list   : " << std::fixed 
 			  << std::setprecision(5) << list_time << " us" << std::endl;
-	_vec.clear();
 	_lst.clear();
 }
