@@ -332,6 +332,7 @@ std::deque<int>& PmergeMe::sortDeque(std::deque<int>& deq) {
 
 void PmergeMe::sort(int argc, char** argv) {
     if (argc <= 1) {
+		std::cerr << "Error: Not enough arguments." << std::endl;
 		return;
 	}
 
